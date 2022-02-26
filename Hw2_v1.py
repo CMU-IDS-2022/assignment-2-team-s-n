@@ -14,8 +14,8 @@ import pandas as pd
 import altair as alt
 import os
 
-os.chdir("C:\Carnegie Mellon University\Spring22\Interactive Data Science\HW2_Streamlit")
-print("Directory changed")
+#os.chdir("C:\Carnegie Mellon University\Spring22\Interactive Data Science\HW2_Streamlit")
+#print("Directory changed")
 
 
 import webbrowser
