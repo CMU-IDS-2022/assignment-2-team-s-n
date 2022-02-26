@@ -2,7 +2,7 @@
 
 * **Team members**: shreyabe@andrew.cmu.edu and XXXX@andrew.cmu.edu (Update XXXX with your team's emails)
 * **Online URL**: https://share.streamlit.io/cmu-ids-2022/YYYY/master/streamlit_app.py (Update YYYY with your repo name)
-* ** Repo Link**: https://github.com/CMU-IDS-2022/assignment-2-team-s-n (More to update in this)
+* **Repo Link**: https://github.com/CMU-IDS-2022/assignment-2-team-s-n (More to update in this)
 * **Streamlit Application**: https://share.streamlit.io/cmu-ids-2022/assignment-2-team-s-n/Hw2_v1.py     
 
 
