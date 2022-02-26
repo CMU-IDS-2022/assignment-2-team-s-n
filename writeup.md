@@ -14,7 +14,7 @@ We have downsized the data because of the huge volume. So instead of presenting 
 
 ## Project Goals
 
-TODO: **Goal 1: To analyze the crime rate in Chicago from 2018 to 2020** Describe the question that you are enabling a user to answer. The question should be compelling and the solution should be focused on helping users achieve their goals. 
+**Goal: To analyze the crime rate in Chicago from 2018 to 2020** Describe the question that you are enabling a user to answer. The question should be compelling and the solution should be focused on helping users achieve their goals. 
 
 **Question - Can we find specific locations which were popular between 2018 and 2020 where people were attacked the most? This data can be used to avoid future incidents to take place.**
 
