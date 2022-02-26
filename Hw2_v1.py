@@ -38,7 +38,7 @@ st.title("Crimes in Chicago (2001 to 2020)")
 with st.spinner(text="Loading data..."):
     df = load_data()
     
-    data = df[['ID', 'Block', 'Primary Type','Location Description Modified','Year','Police Districts','Arrest','Latitude','Longitude']].copy()
+    data = df[['ID', 'Primary Type','Location Description Modified','Year','Police Districts','Arrest']].copy()
     
     #REFERENCE - https://stackoverflow.com/questions/62315591/altair-select-all-values-when-using-binding-select
     location_list = list(data['Location Description Modified'].unique()) + [None]
