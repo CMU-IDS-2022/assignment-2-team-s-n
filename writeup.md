@@ -18,7 +18,7 @@ We have downsized the data because of the huge volume. So instead of presenting 
 
 **Question - Can we find specific locations which were popular between 2018 and 2020 where people were attacked the most? This data can be used to avoid future incidents to take place.**
 
-**Answer - In order to answer the above question, we have utilized various graphs and charts (Interactive in nature). **
+**Answer - In order to answer the above question, we have utilized various graphs and charts (Interactive in nature).**
 
 **Step 1**: Firstly, we divided the Location Types from 100+ locations to 10 broad categories:
 The categories include: 'RESIDENCE', 'STREET', 'OFFICE', 'OTHER', 'SCHOOL', 'SIDEWALK','AIRPORT', 'VEHICLE', 'PARKING', 'LIBRARY'
