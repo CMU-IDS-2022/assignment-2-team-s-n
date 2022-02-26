@@ -34,7 +34,7 @@ def load_data():
 
 # MAIN CODE
 
-st.title("Crimes in Chicago (2001 to 2020)")
+st.title("Crimes in Chicago (2018 to 2020)")
 st.header("Shreya Bedi & Nikita Jyoti")
 with st.spinner(text="Loading data..."):
     df = load_data()
