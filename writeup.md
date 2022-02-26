@@ -1,6 +1,7 @@
 # Project name
 
-![A screenshot of your application. Could be a GIF.](screenshot.png)
+![image](https://user-images.githubusercontent.com/95111909/155821283-3cb6f9e5-11c5-487f-8b91-7350d80e8a1c.png)
+
 
 TODO: Update screenshot
 
