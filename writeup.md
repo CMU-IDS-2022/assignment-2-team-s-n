@@ -34,11 +34,19 @@ SUMMARY: These categories can help understand which are the most unsafe location
 
 ## Design
 
-TODO: **A rationale for your design decisions.** How did you choose your particular visual encodings and interaction techniques? What alternatives did you consider and how did you arrive at your ultimate choices?
+**The design decision was made to keep the dashboard simple and interactive so that it is self explanatory for the users to use it** How did you choose your particular visual encodings and interaction techniques? What alternatives did you consider and how did you arrive at your ultimate choices?
+
+1. The first choice was to create checkboxes so that the dashboard does not look overly cluttered. If the user wants to look for the data, they can click on "Show Table" option. If they want to see the graphs and work around with them, then they can click on "Show the graphs" option.
+2. The "Show table" option consists of the sample dataset that we have. It has 5 rows so that the users can get an understanding of what sort of data is available when they are interacting with the charts.
+3. The "Show the graphs" option consists of all the interactive charts that our team has created in order to answer the above imposed question.
+4. The charts have various filters and dropdown options so that the users can experiment with the underlying data.
+5. The charts are also interlinked to one another.
+
+
 
 ## Development
 
-TODO: **An overview of your development process.** Describe how the work was split among the team members. Include a commentary on the development process, including answers to the following questions: Roughly how much time did you spend developing your application (in people-hours)? What aspects took the most time?
+TODO: **Overview of the Development Process** Describe how the work was split among the team members. Include a commentary on the development process, including answers to the following questions: Roughly how much time did you spend developing your application (in people-hours)? What aspects took the most time?
 
 ## Success Story
 
