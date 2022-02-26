@@ -53,7 +53,7 @@ with st.spinner(text="Loading data..."):
     #NOT TAKING OR SHOWING THE NULL VALUES
     st.header("Welcome to our Interactive Dashboard..")
     st.header("Some information about the data ..")
-    st.text("Dataset reflects the reported incidents of crime in the city of Chicago from 2001 to 2020.")
+    st.text("Dataset reflects the reported incidents of crime in the city of Chicago from 2018 to 2020.")
     st.text("Brushes have been added to all the visuals. Feel free to explore!")
         
     
@@ -147,25 +147,25 @@ with st.spinner(text="Loading data..."):
         
         
             
-        st.header("Most Crimes Across Years")
-        st.write("Click on any year to specifically see the count. Brush has been created")
+        # st.header("Most Crimes Across Years")
+        # st.write("Click on any year to specifically see the count. Brush has been created")
         
         
-        year = alt.Chart(data).transform_filter(year_brush).mark_bar().encode(
-        y=alt.Y('count()'),
-        x=alt.X('Year', sort='-y'),
-        color = alt.Color('Year'),
-        tooltip =['Year','Police Districts','Location Description Modified']
-        ).interactive(
-        ).transform_window(
-        rank='rank(count())',
-        sort=[alt.SortField('count()', order='descending')]
-        ).properties(
-        width=800,
-        height=300
-        ).interactive().add_selection(year_brush)
+        # year = alt.Chart(data).transform_filter(year_brush).mark_bar().encode(
+        # y=alt.Y('count()'),
+        # x=alt.X('Year', sort='-y'),
+        # color = alt.Color('Year'),
+        # tooltip =['Year','Police Districts','Location Description Modified']
+        # ).interactive(
+        # ).transform_window(
+        # rank='rank(count())',
+        # sort=[alt.SortField('count()', order='descending')]
+        # ).properties(
+        # width=800,
+        # height=300
+        # ).interactive().add_selection(year_brush)
             
-        st.altair_chart(year, use_container_width=True)
+        # st.altair_chart(year, use_container_width=True)
   
         
         st.header("Most popular location each year")
