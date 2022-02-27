@@ -169,7 +169,7 @@ with st.spinner(text="Loading data..."):
   
         
         st.header("Most popular location each year")
-        st.write("Try changing the year to see specific count")
+        st.write("Try changing the year to see specific count.")
         
         
         year_selectbox = st.selectbox("Yearly Count of Incidents", data['Year'].unique())
@@ -198,7 +198,7 @@ with st.spinner(text="Loading data..."):
     
     
         st.header("Number of Crimes handled by a Police District")
-        st.write("Try changing the year to see specific count")
+        st.write("Try changing the year to see specific count. You can zoom-in and zoom-out too.")
         
         
     
