@@ -111,7 +111,7 @@ with st.spinner(text="Loading data..."):
         
         
         st.write("Click on various Primary Types to see more detailed view. The graph is interactive in nature.")
-        st.write("The two colors - Orange and Blue help us distinguish if an arrest was made or not. Clearly looking at the graph we can see that between 2018 and 2020 many arrests were not made. Looking closely many arrests were made for Narcotics possession or usage. Alarmingly, many theft type of crime incidents did not lead to an arrest. Maybe the authorities can work more towards that. Prevent crime incidents from happening in the future according to the statistics.")
+        st.write("The two colors - Orange and Blue help us distinguish if an arrest was made or not. Clearly looking at the graph we can see that between 2018 and 2020 many arrests were not made. Looking closely many arrests were made for Narcotics possession or usage. Alarmingly, many theft type of crime incidents did not lead to an arrest. This is something that the authorities can work towards -- prevent crime incidents from happening in the future according to the statistics. As this chart provides a breakdown according to category, the police can draw clear insights and pick a category or two where processes could be improved.")
         
         # ------------------------------------------------------------------------------------------------------------
         # MAKING CODE DISTINCTION FOR DIFFERENT SET OF RELATED GRAPHS
@@ -120,11 +120,11 @@ with st.spinner(text="Loading data..."):
         #CHART 2:
             
         st.header("Location Selection")
-        st.write("Change the Location to see how many arrests were made vs not made in a given location")
-        location_selectbox = st.selectbox("Location Counts", data['Location Description Modified'].unique())
+        st.write("Change the Location Type to see how many arrests were made vs not made in places that fall under that type.")
+        location_selectbox = st.selectbox("Location Type", data['Location Description Modified'].unique())
         location_df = data[data['Location Description Modified'] == location_selectbox]
         
-        st.write("Feel free to choose the different locations where the crime took place. The count below shows how many incidents took place at various locations")
+        st.write("Feel free to choose the different location types where crimes were committed. The count below shows how many incidents took place at the selected location type. Again, the blue bar indicates arrests not made, whereas, orange represents the arrests made.")
         st.write(len(location_selectbox))
         st.write("")
     
@@ -147,16 +147,16 @@ with st.spinner(text="Loading data..."):
 
         st.altair_chart(arrest, use_container_width=True)
         
-        st.write("Analyzing the chart, mostly the locations are such where the arrests did not take place. Only a few cases such as - SIDEWALKS, VEHICLES, where more arrests were made.")
-        st.write("Conclusion from this graph analysis - Stricter security is required at other locations. Maybe there are not enough evidences to catch the culprit")
+        st.write("Analyzing the chart, arrests were not made for most crimes committed in all of the various types of locations. Only a few locations exist such as - SIDEWALKS, VEHICLES, where arrests made were more in number than the cases where they were not.")
+        st.write("Conclusion from this graph analysis - Stricter security is required at other locations. Perhaps, the current resources and measures in place are not enough to gather sufficient evidence required for making an arrest. An example could be installing more CCTV cameras and increasing surveillance.")
        
         # ------------------------------------------------------------------------------------------------------------
         # MAKING CODE DISTINCTION FOR DIFFERENT SET OF RELATED GRAPHS
         # ------------------------------------------------------------------------------------------------------------
     
         #Altair chart to show the number of crime at different locations
-        st.header("Top Locations (Where the incident occurred)")
-        st.write("Select the options from the drop down below")
+        st.header("Top Locations (Where the crime was committed)")
+        st.write("Select an option from the drop down menu below to see filtered results.")
         
         location = alt.Chart(data).transform_filter(location_brush).mark_bar().encode(
         y=alt.Y('count()'),
@@ -178,9 +178,9 @@ with st.spinner(text="Loading data..."):
             
         st.altair_chart(location, use_container_width=True)
         
-        st.write("Choosing null in the graph means that no specific Location Description was chosen. This will show all the locations available. However, feel free to choose any one specific Location and hover over to understand and get more detailed analysis of the data points. ")
+        st.write("Choosing null in the graph means that no specific Location Description was chosen. This will show all the types of locations available. However, feel free to choose any one specific Location Type and hover over to understand and get more detailed analysis of the data points. The graph shows total number of crimes committed by the location type.")
 
-        st.write("Our analysis shows that mostly crime took place at the following locations - RESIDENCE, STREET or SIDEWALKS")
+        st.write("Our analysis shows that mostly crime took place at the following locations - RESIDENCE, STREET or SIDEWALKS. These could be identified as high risk zones where a crime is most likely to occur. The police could increase surveillance here.")
 
         # ------------------------------------------------------------------------------------------------------------
         # MAKING CODE DISTINCTION FOR DIFFERENT SET OF RELATED GRAPHS
@@ -216,7 +216,7 @@ with st.spinner(text="Loading data..."):
         st.altair_chart(year_wise_location, use_container_width=True)
     
         st.write("Concluding our analysis for this graph: ")
-        st.write("Every year (2018,2019,2020), most of the crime incidents take place either on the Streets or the house of an individual. New measures should be taken to understand and help prevent these crimes in the future.")
+        st.write("Every year (2018,2019,2020), most of the crime incidents take place either on the Streets or within the house of an individual. Measures should be taken to understand and help prevent these crimes in the future.")
     
         # ------------------------------------------------------------------------------------------------------------
         # MAKING CODE DISTINCTION FOR DIFFERENT SET OF RELATED GRAPHS
