@@ -53,16 +53,18 @@ with st.spinner(text="Loading data..."):
     #NOT TAKING OR SHOWING THE NULL VALUES
     st.header("Welcome to our Interactive Dashboard..")
     st.header("Some information about the data ..")
-    st.text("Dataset reflects the reported incidents of crime in the city of Chicago from 2018 to 2020.")
-    st.text("Brushes have been added to all the visuals. Feel free to explore!")
+    st.write("Dataset reflects the reported incidents of crime in the city of Chicago from 2018 to 2020.")
+    st.write("Brushes have been added to all the visuals. Feel free to explore!")
         
     
    #Lets keep a checkbox for showing the table. Sample Dataset:
     st.header("Sample Dataset")
-    st.text("Click on the checkbox to see the data")
+    st.write("Click on the checkbox to see the data")
     if st.checkbox('Show Table'):
         selected_rows = df[~df.isnull()]
         st.dataframe(selected_rows.head(5))
+        
+    st.write("If we look at the data closely, out of all the columns that we had in the dataset, we chose the most important ones that can help us understand the exact nature of the crime. The ID column describes the unique number which is assigned to the crime incident. Primary Type column will help understand what sort of a crime was it. For example - Was it theft, deceptive practice, and so on.. Location description column will help understand the exact location where the crime took place. We have divided this column into 10 major categories. Arrest columns will decribe if the person who committed the crime was arrested or not. Feel free to check the graphs below to help answer these questions. Police district tells the exact district where the incident took place and who handled it")
     
     #LETS TRY CREATING BRUSHES
     arrest_brush = alt.selection_multi(fields=['Arrest'])
