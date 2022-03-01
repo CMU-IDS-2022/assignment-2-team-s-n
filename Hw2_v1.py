@@ -73,6 +73,7 @@ with st.spinner(text="Loading data..."):
 
     #Code starts from here for the interactive graphs
     st.header("Interactive Graphs")
+    st.write("NOTE: All of the visualizations can be enlarged using the pinch arrow icon placed next to the top right corner of each chart. Additionally, you can click on the 3 dots for more export options. Each chart also incorporates an on-hover tooltip to provide further interactivity.")
     if st.checkbox('Show the graphs'):
         
         #CHART 1:
@@ -86,9 +87,9 @@ with st.spinner(text="Loading data..."):
         st.write("Feel free to choose True and False from the dropdown. True stands for the total number of arrests that happened. False stands for the actual incident taking place but unfortunately arrest did not take place.")
         st.write(len(arrest_df))
         st.write("")
-        st.write("According to our analysis after looking that the True vs False counts, more incidents did not lead to an arrest compared to the number of arrests happening. This data is strictly from 2018 to 2020. One reason why arrests did not happen might be because the incidents were not of that extreme crime level. Another reason can be that police was not able to locate the culprit behind crimes.")
+        st.write("According to our analysis after looking that the True vs False counts, more incidents did not lead to an arrest compared to the number of arrests happening. This data is strictly from 2018 to 2020. One reason why arrests did not happen might be because the incidents were not of that extreme crime level and were pardoned with a fine and/or a court hearing. Another reason can be that police was not able to locate the culprit behind crimes and thus the case remians open. A third reason could be that the case was transferred to another police district.")
         
-        st.write("Below lets see the primary type of crime that happened where arrest took place vs did not take place")
+        st.write("Now, lets take a look at the primary type of crime that happened where arrest took place vs did not take place.")
         st.header("Primary Type of Crime")
         
 
@@ -237,7 +238,7 @@ with st.spinner(text="Loading data..."):
             
         st.altair_chart(police_districts, use_container_width=True)
         
-        st.write("Feel free to click on any Pointer District pointer in the graph. You can even hover over the various points to see more detailed information about the data points.")
+        st.write("Feel free to click on any Pointer District pointer in the graph. You can even hover over the various points to see more detailed information about the data points. This graph also supports zoom in and zoom out operations in the minimized view itself.")
         
         
         
