@@ -54,7 +54,6 @@ Our data consists of 8 features which are described as follows. Our streamlit ap
 8. Location Description Modified: Since the location types were very diverse, we have encoded them into categories for ease of handling data. For instance, any location description such as commercial building or office space will be encoded as 'Office'.
 
 
-
 ## Development
 
 **Overview of the Development Process**
