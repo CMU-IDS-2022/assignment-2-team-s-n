@@ -46,7 +46,7 @@ with st.spinner(text="Loading data..."):
 
     
     input_dropdown = alt.binding_select(options=location_list)
-    selection = alt.selection_single(fields=['Location Description Modified'], bind=input_dropdown, name='Location')
+    selection = alt.selection_single(fields=['Location Description Modified'], bind=input_dropdown, name='New')
     
    
     
@@ -142,6 +142,8 @@ with st.spinner(text="Loading data..."):
         ).interactive().add_selection(location_brush)
             
         st.altair_chart(location, use_container_width=True)
+        
+        st.write("Choosing null in the graph means that no specific Location Description was chosen. This will show all the locations available. However, feel free to choose any one specific Location and hover over to understand and get more detailed analysis of the data points. ")
 
         
     # # Altair chart to show the number of crime in various years
@@ -199,12 +201,14 @@ with st.spinner(text="Loading data..."):
     
     
     
-        st.header("Number of Crimes handled by a Police District")
+        st.header("Number of Crime Incidents handled by a Police District")
         st.write("Try changing the year to see specific count")
         
         
     
     #Altair chart that helps understand the most popular location each year
+    
+        st.write("This graph shows the number of crime incidents handled by various Police Districts. This can help us analyze which are the districts where most number of crimes took place between 2018 and 2020.")
         police_districts = alt.Chart(year_df).transform_filter(district_brush).mark_point().encode(
         alt.X('Police Districts', scale=alt.Scale(zero=False)),
         alt.Y('count()', scale=alt.Scale(zero=False)),
@@ -215,6 +219,9 @@ with st.spinner(text="Loading data..."):
         ).interactive().add_selection(district_brush)
             
         st.altair_chart(police_districts, use_container_width=True)
+        
+        st.write("Feel free to click on any Pointer District pointer in the graph. You can even hover over the various points to see more detailed information about the data points.")
+        
         
         
         
