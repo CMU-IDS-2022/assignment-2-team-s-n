@@ -43,7 +43,7 @@ SUMMARY: These categories can help identify the most unsafe locations where peop
 4. The charts have various filters and dropdown options so that the users can experiment with the underlying data.
 5. The charts are also interlinked to one another.
 
-Our data consists of 8 features which are described as follows:
+Our data consists of 8 features which are described as follows. Our streamlit app also gives an overview of some of these before the user dives into charts and graphs.
 1. ID: This is the case ID under which the crime report was lodged by Chicago PD.
 2. Primary Type: This signifies the type of crime that occured for example theft, robbery, attack etc.
 3. Location Description: where the crime took place such as street, residence, grocery food store and so on.
