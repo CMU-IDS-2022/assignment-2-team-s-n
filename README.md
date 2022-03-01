@@ -1,9 +1,8 @@
 # CMU Interactive Data Science Assigment 2
 
 * **Team members**: shreyabe@andrew.cmu.edu and njyoti@andrew.cmu.edu
-* **Online URL**: https://share.streamlit.io/cmu-ids-2022/assignment-2-team-s-n/Hw2_v1.py 
-* **Repo Link**: https://github.com/CMU-IDS-2022/assignment-2-team-s-n (More to update in this)
-* **Streamlit Application**: https://share.streamlit.io/cmu-ids-2022/assignment-2-team-s-n/Hw2_v1.py     
+* **Online URL/Streamlit Application**: https://share.streamlit.io/cmu-ids-2022/assignment-2-team-s-n/Hw2_v1.py 
+* **Repo Link**: https://github.com/CMU-IDS-2022/assignment-2-team-s-n (More to update in this)   
 
 
 
