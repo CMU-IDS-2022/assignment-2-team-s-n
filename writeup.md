@@ -43,6 +43,16 @@ SUMMARY: These categories can help identify the most unsafe locations where peop
 4. The charts have various filters and dropdown options so that the users can experiment with the underlying data.
 5. The charts are also interlinked to one another.
 
+Our data consists of 8 features which are described as follows:
+1. ID: This is the case ID under which the crime report was lodged by Chicago PD.
+2. Primary Type: This signifies the type of crime that occured for example theft, robbery, attack etc.
+3. Location Description: where the crime took place such as street, residence, grocery food store and so on.
+4. Arrest: whther an arrest was made in the case. This is a boolean feature.
+5. District: indicates the district where the incident occurred.
+6. Year: Year when the crime took place.
+7. Police District: indicates the police jurisdiction district the crime occured in.
+8. Location Description Modified: Since the location types were very diverse, we have encoded them into categories for ease of handling data. For instance, any location description such as commercial building or office space will be encoded as 'Office'.
+
 
 
 ## Development
