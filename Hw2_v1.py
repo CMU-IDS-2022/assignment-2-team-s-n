@@ -243,7 +243,7 @@ with st.spinner(text="Loading data..."):
         
         st.header("Conclusion")
         st.write("Overall, this was a fun project that provided an opportunity to perform an introductory analysis of data. Deciding upon the visualizations to answer the question we chose, was a task we enjoyed.")
-        st.write("We hope you too had looking at our analysis and enjoyed our project. THANK YOU!")        
+        st.write("We hope you too had fun looking at our analysis and enjoyed our project. THANK YOU!")        
         
         
         
