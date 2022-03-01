@@ -196,7 +196,7 @@ with st.spinner(text="Loading data..."):
         
         st.write(len(year_df))
         st.write("")
-        st.write("The count above shows how many incidences took place in a given year. Feel free to see the count for different years")
+        st.write("The count above shows the number of crime incidences took place in a given year. Feel free to see the count for different years")
         
         # Altair chart to show the number of crime in various years and locations
         year_wise_location = alt.Chart(year_df).transform_filter(location_brush).mark_bar().encode(
@@ -243,7 +243,7 @@ with st.spinner(text="Loading data..."):
         
         
         st.header("Conclusion")
-        st.write("Based on the visualizations above, we can assess the crime rate in Chicago between 2018 and 2020. Detailed analysis of location specific crime or arrest rate can also be carried out.")
+        st.write("Based on the visualizations above, we can assess the crime rate in Chicago between 2018 and 2020. We see, (particularly from Graph 4) that the number of crimes committed have reduced from 2018 (about 40,000) to about 5000 in 2019 and finally about 4000 in the year 2020. Detailed analysis of location specific crime or arrest rate can also be carried out.")
         st.write("Overall, this was a fun project that provided an opportunity to perform an introductory analysis of data. Deciding upon the visualizations to answer the question we chose, was a task we enjoyed. We hope you liked our project. THANK YOU!")        
         
         
