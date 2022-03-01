@@ -16,7 +16,7 @@ import os
 
 #os.chdir("C:\Carnegie Mellon University\Spring22\Interactive Data Science\HW2_Streamlit")
 #print("Directory changed")
-
+#REFERENCE - https://towardsdatascience.com/how-to-create-interactive-and-elegant-plot-with-altair-8dd87a890f2a
 
 import webbrowser
 
@@ -48,16 +48,14 @@ with st.spinner(text="Loading data..."):
     input_dropdown = alt.binding_select(options=location_list)
     selection = alt.selection_single(fields=['Location Description Modified'], bind=input_dropdown, name='New')
     
-   
     
-    #NOT TAKING OR SHOWING THE NULL VALUES
+    #NOT TAKING OR SHOWING THE NULL VALUES IN THE DATASET
     st.header("Welcome to our Interactive Dashboard..")
     st.header("Some information about the data ..")
     st.write("Dataset reflects the reported incidents of crime in the city of Chicago from 2018 to 2020.")
     st.write("Brushes have been added to all the visuals. Feel free to explore!")
         
-    
-   #Lets keep a checkbox for showing the table. Sample Dataset:
+   #Creating checkbox for showing the table. Sample Dataset:
     st.header("Sample Dataset")
     st.write("Click on the checkbox to see the data")
     if st.checkbox('Show Table'):
@@ -66,35 +64,69 @@ with st.spinner(text="Loading data..."):
         
     st.write("If we look at the data closely, out of all the columns that we had in the dataset, we chose the most important ones that can help us understand the exact nature of the crime. The ID column describes the unique number which is assigned to the crime incident. Primary Type column will help understand what sort of a crime was it. For example - Was it theft, deceptive practice, and so on.. Location description column will help understand the exact location where the crime took place. We have divided this column into 10 major categories. Arrest columns will decribe if the person who committed the crime was arrested or not. Feel free to check the graphs below to help answer these questions. Police district tells the exact district where the incident took place and who handled it")
     
-    #LETS TRY CREATING BRUSHES
+    #CREATING BRUSHES FOR DIFFERENT USES
     arrest_brush = alt.selection_multi(fields=['Arrest'])
     location_brush = alt.selection_multi(fields=['Location Description Modified'])
     district_brush = alt.selection_multi(fields=['Police Districts'])
     year_brush = alt.selection_multi(fields=['Year'])
 
 
+    #Code starts from here for the interactive graphs
     st.header("Interactive Graphs")
     if st.checkbox('Show the graphs'):
         
+        #CHART 1:
         
         #Creating a selection box:
         st.header("Arrested? (Change True or False)")
         arrests_selectbox = st.selectbox("Lets see the Arrest vs Non-Arrest Count", data['Arrest'].unique())
         arrest_df = data[data['Arrest'] == arrests_selectbox]
-        
-        
+
+        #Showing the length of the number of arrests that happened vs did not happen
+        st.write("Feel free to choose True and False from the dropdown. True stands for the total number of arrests that happened. False stands for the actual incident taking place but unfortunately arrest did not take place.")
         st.write(len(arrest_df))
         st.write("")
+        st.write("According to our analysis after looking that the True vs False counts, more incidents did not lead to an arrest compared to the number of arrests happening. This data is strictly from 2018 to 2020. One reason why arrests did not happen might be because the incidents were not of that extreme crime level. Another reason can be that police was not able to locate the culprit behind crimes.")
         
+        st.write("Below lets see the primary type of crime that happened where arrest took place vs did not take place")
+        st.header("Primary Type of Crime")
+        
+
+        primary_type = alt.Chart(data).transform_filter(arrest_brush).mark_bar().encode(
+        y=alt.Y('count()'),
+        x=alt.X('Primary Type', sort='-y'),
+        color = alt.Color('Arrest'),
+        tooltip =['Year','Police Districts','Location Description Modified', 'Arrest']
+        ).interactive(
+        ).transform_window(
+        rank='rank(count())',
+        sort=[alt.SortField('count()', order='descending')]
+        ).properties(
+        width=1000,
+        height=500
+        ).interactive().add_selection(arrest_brush)
+        
+        st.altair_chart(primary_type, use_container_width=True)
+        
+        
+        st.write("Click on various Primary Types to see more detailed view. The graph is interactive in nature.")
+        st.write("The two colors - Orange and Blue help us distinguish if an arrest was made or not. Clearly looking at the graph we can see that between 2018 and 2020 many arrests were not made. Looking closely many arrests were made for Narcotics possession or usage. Alarmingly, many theft type of crime incidents did not lead to an arrest. Maybe the authorities can work more towards that. Prevent crime incidents from happening in the future according to the statistics.")
+        
+        # ------------------------------------------------------------------------------------------------------------
+        # MAKING CODE DISTINCTION FOR DIFFERENT SET OF RELATED GRAPHS
+        # ------------------------------------------------------------------------------------------------------------
+        
+        #CHART 2:
+            
+        st.header("Location Selection")
+        st.write("Change the Location to see how many arrests were made vs not made in a given location")
         location_selectbox = st.selectbox("Location Counts", data['Location Description Modified'].unique())
         location_df = data[data['Location Description Modified'] == location_selectbox]
         
+        st.write("Feel free to choose the different locations where the crime took place. The count below shows how many incidents took place at various locations")
         st.write(len(location_selectbox))
         st.write("")
-        
-        
-        
-        
+    
         
         #We want to firstly understand the number of arrests made vs not made:  
         st.write("Change the Location to see how many arrests were made vs not made in a given location")
@@ -113,13 +145,15 @@ with st.spinner(text="Loading data..."):
         ).interactive().add_selection(arrest_brush)
 
         st.altair_chart(arrest, use_container_width=True)
-
-    #REFERENCE - https://towardsdatascience.com/how-to-create-interactive-and-elegant-plot-with-altair-8dd87a890f2a
-
         
-    #Altair chart to show the number of crime at different locations
-        
-        
+        st.write("Analyzing the chart, mostly the locations are such where the arrests did not take place. Only a few cases such as - SIDEWALKS, VEHICLES, where more arrests were made.")
+        st.write("Conclusion from this graph analysis - Stricter security is required at other locations. Maybe there are not enough evidences to catch the culprit")
+       
+        # ------------------------------------------------------------------------------------------------------------
+        # MAKING CODE DISTINCTION FOR DIFFERENT SET OF RELATED GRAPHS
+        # ------------------------------------------------------------------------------------------------------------
+    
+        #Altair chart to show the number of crime at different locations
         st.header("Top Locations (Where the incident occurred)")
         st.write("Select the options from the drop down below")
         
@@ -133,7 +167,7 @@ with st.spinner(text="Loading data..."):
         rank='rank(count())',
         sort=[alt.SortField('count()', order='descending')]
         ).properties(
-        width=800,
+        width=900,
         height=300
         ).add_selection(
         selection
@@ -145,44 +179,25 @@ with st.spinner(text="Loading data..."):
         
         st.write("Choosing null in the graph means that no specific Location Description was chosen. This will show all the locations available. However, feel free to choose any one specific Location and hover over to understand and get more detailed analysis of the data points. ")
 
+        st.write("Our analysis shows that mostly crime took place at the following locations - RESIDENCE, STREET or SIDEWALKS")
+
+        # ------------------------------------------------------------------------------------------------------------
+        # MAKING CODE DISTINCTION FOR DIFFERENT SET OF RELATED GRAPHS
+        # ------------------------------------------------------------------------------------------------------------
         
-    # # Altair chart to show the number of crime in various years
-        
-        
-        
-            
-        # st.header("Most Crimes Across Years")
-        # st.write("Click on any year to specifically see the count. Brush has been created")
-        
-        
-        # year = alt.Chart(data).transform_filter(year_brush).mark_bar().encode(
-        # y=alt.Y('count()'),
-        # x=alt.X('Year', sort='-y'),
-        # color = alt.Color('Year'),
-        # tooltip =['Year','Police Districts','Location Description Modified']
-        # ).interactive(
-        # ).transform_window(
-        # rank='rank(count())',
-        # sort=[alt.SortField('count()', order='descending')]
-        # ).properties(
-        # width=800,
-        # height=300
-        # ).interactive().add_selection(year_brush)
-            
-        # st.altair_chart(year, use_container_width=True)
-  
-        
+        #Altair chart to show the number of crime in various years
         st.header("Most popular location each year")
         st.write("Try changing the year to see specific count")
         
-        
+        #Created a year selection box for the below visual
         year_selectbox = st.selectbox("Yearly Count of Incidents", data['Year'].unique())
         year_df = data[data['Year'] == year_selectbox]
         
         st.write(len(year_df))
         st.write("")
+        st.write("The count above shows how many incidences took place in a given year. Feel free to see the count for different years")
         
-    # Altair chart to show the number of crime in various years and locations
+        # Altair chart to show the number of crime in various years and locations
         year_wise_location = alt.Chart(year_df).transform_filter(location_brush).mark_bar().encode(
         x=alt.X('Location Description Modified'),
         y=alt.Y('count()'),
@@ -199,15 +214,17 @@ with st.spinner(text="Loading data..."):
             
         st.altair_chart(year_wise_location, use_container_width=True)
     
+        st.write("Concluding our analysis for this graph: ")
+        st.write("Every year (2018,2019,2020), most of the crime incidents take place either on the Streets or the house of an individual. New measures should be taken to understand and help prevent these crimes in the future.")
     
-    
+        # ------------------------------------------------------------------------------------------------------------
+        # MAKING CODE DISTINCTION FOR DIFFERENT SET OF RELATED GRAPHS
+        # ------------------------------------------------------------------------------------------------------------
+        
         st.header("Number of Crime Incidents handled by a Police District")
         st.write("Try changing the year to see specific count")
         
-        
-    
-    #Altair chart that helps understand the most popular location each year
-    
+        #Altair chart that helps understand how many incidents were handled by the various districts.
         st.write("This graph shows the number of crime incidents handled by various Police Districts. This can help us analyze which are the districts where most number of crimes took place between 2018 and 2020.")
         police_districts = alt.Chart(year_df).transform_filter(district_brush).mark_point().encode(
         alt.X('Police Districts', scale=alt.Scale(zero=False)),
@@ -224,8 +241,9 @@ with st.spinner(text="Loading data..."):
         
         
         
-        
-        
+        st.header("Conclusion")
+        st.write("Overall, this was a fun project that provided an opportunity to perform an introductory analysis of data. Deciding upon the visualizations to answer the question we chose, was a task we enjoyed.")
+        st.write("We hope it was interesting and fun looking at our analysis. THANK YOU!")        
         
         
         
