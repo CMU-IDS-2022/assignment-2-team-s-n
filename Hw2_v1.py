@@ -155,7 +155,7 @@ with st.spinner(text="Loading data..."):
         # ------------------------------------------------------------------------------------------------------------
     
         #Altair chart to show the number of crime at different locations
-        st.header("Top Locations (Where the crime was committed)")
+        st.header("Top Locations (Where crime was committed)")
         st.write("Select an option from the drop down menu below to see filtered results.")
         
         location = alt.Chart(data).transform_filter(location_brush).mark_bar().encode(
@@ -180,7 +180,7 @@ with st.spinner(text="Loading data..."):
         
         st.write("Choosing null in the graph means that no specific Location Description was chosen. This will show all the types of locations available. However, feel free to choose any one specific Location Type and hover over to understand and get more detailed analysis of the data points. The graph shows total number of crimes committed by the location type.")
 
-        st.write("Our analysis shows that mostly crime took place at the following locations - RESIDENCE, STREET or SIDEWALKS. These could be identified as high risk zones where a crime is most likely to occur. The police could increase surveillance here.")
+        st.write("From an initial overview it seems like the chart shows data for only 2018. This is only natural since this is the year with the highest number of cases (~40k), whereas, 2019 and 2020 had much lesser cases in comparison. This may be due to the lockdown following COVID-19 outbreak where supplies were limited and stores were closed. Our analysis shows that mostly crime took place at the following locations - RESIDENCE, STREET or SIDEWALKS. These could be identified as high risk zones where a crime is most likely to occur. The police could increase surveillance here.")
 
         # ------------------------------------------------------------------------------------------------------------
         # MAKING CODE DISTINCTION FOR DIFFERENT SET OF RELATED GRAPHS
