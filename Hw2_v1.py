@@ -243,8 +243,8 @@ with st.spinner(text="Loading data..."):
         
         
         st.header("Conclusion")
-        st.write("Overall, this was a fun project that provided an opportunity to perform an introductory analysis of data. Deciding upon the visualizations to answer the question we chose, was a task we enjoyed.")
-        st.write("We hope you too had fun looking at our analysis and enjoyed our project. THANK YOU!")        
+        st.write("Based on the visualizations above, we can assess the crime rate in Chicago between 2018 and 2020. Detailed analysis of location specific crime or arrest rate can also be carried out.")
+        st.write("Overall, this was a fun project that provided an opportunity to perform an introductory analysis of data. Deciding upon the visualizations to answer the question we chose, was a task we enjoyed. We hope you liked our project. THANK YOU!")        
         
         
         
